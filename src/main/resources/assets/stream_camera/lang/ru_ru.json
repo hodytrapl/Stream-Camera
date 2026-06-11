@@ -1,0 +1,8 @@
+{
+  "key.stream_camera.f6": "запуск\\приостановить",
+  "key.stream_camera.f7": "Сохранить точку",
+  "key.stream_camera.f8": "Перезапуск конфигов",
+  "key.stream_camera.up": "След. Точка",
+  "key.stream_camera.down": "Пред. Точка",
+  "key.categories.stream_camera": "Стрим камера"
+}

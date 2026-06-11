@@ -1,0 +1,8 @@
+{
+  "key.stream_camera.f6": "Start\\stop",
+  "key.stream_camera.f7": "Save Point",
+  "key.stream_camera.f8": "Reload Config",
+  "key.stream_camera.up": "Next point",
+  "key.stream_camera.down": "Prev point",
+  "key.categories.stream_camera": "Stream Camera"
+}

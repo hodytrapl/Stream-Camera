@@ -1,0 +1,42 @@
+package org.hodytrapl.stream_camera;
+
+import com.mojang.logging.LogUtils;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import org.hodytrapl.stream_camera.camera.LifetimeManager;
+import org.hodytrapl.stream_camera.config.ModPaths;
+import org.hodytrapl.stream_camera.config.ModSettings;
+import org.hodytrapl.stream_camera.key.KeyInputHandler;
+import org.hodytrapl.stream_camera.network.TeleportPayload;
+import org.slf4j.Logger;
+
+@Mod(Stream_camera.MODID)
+public class Stream_camera {
+    public static final String MODID = "stream_camera";
+    private static final Logger LOGGER = LogUtils.getLogger();
+
+    public Stream_camera(IEventBus modBus, ModContainer modContainer) {
+        // Создаём папку config/stream_camera (если нет)
+        ModPaths.getConfigDir();
+
+        // Загружаем настройки мода (settings.toml)
+        ModSettings.load();
+
+        // Регистрация клавиш и пакетов (без NeoForge Config)
+        modBus.addListener(KeyInputHandler::registerKeys);
+        modBus.addListener(this::registerPayloads);
+        NeoForge.EVENT_BUS.addListener(ClientTickEvent.Post.class, KeyInputHandler::onClientTick);
+    }
+
+    private void registerPayloads(RegisterPayloadHandlersEvent event) {
+        event.registrar("1").playToServer(
+                TeleportPayload.TYPE,
+                TeleportPayload.STREAM_CODEC,
+                TeleportPayload::handle
+        );
+    }
+}
