@@ -2,12 +2,15 @@ package org.hodytrapl.stream_camera.camera;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.hodytrapl.stream_camera.config.ModSettings;
 import org.hodytrapl.stream_camera.network.TeleportPayload;
 
 import java.util.List;
 
+@OnlyIn(Dist.CLIENT)
 public class LifetimeManager {
     private static boolean active = false;
     private static int currentIndex = 0;

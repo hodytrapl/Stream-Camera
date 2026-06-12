@@ -3,6 +3,8 @@ package org.hodytrapl.stream_camera.key;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import org.hodytrapl.stream_camera.camera.CameraPointManager;
@@ -10,6 +12,7 @@ import org.hodytrapl.stream_camera.camera.LifetimeManager;
 import org.hodytrapl.stream_camera.config.ModSettings;
 import org.lwjgl.glfw.GLFW;
 
+@OnlyIn(Dist.CLIENT)
 public class KeyInputHandler {
     // Определение клавиш а то задолбался команды вводить
     public static final KeyMapping KEY_F6 = new KeyMapping(

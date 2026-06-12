@@ -19,6 +19,18 @@ public class ModPaths {
         return configDir;
     }
 
+    public static Path getPointsDir() {
+        Path base = getConfigDir().resolve("points");
+        if (!base.toFile().exists()) {
+            base.toFile().mkdirs();
+        }
+        return base;
+    }
+
+    public static Path getPointsFileForServer(String serverId) {
+        return getPointsDir().resolve(serverId + ".toml");
+    }
+
     public static Path getPointsFile() {
         return getConfigDir().resolve("points.toml");
     }
