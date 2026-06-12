@@ -21,7 +21,7 @@ public class ServerCommands {
 
     private static int reloadAccess(CommandContext<CommandSourceStack> ctx) {
         ServerAccessConfig.reload();
-        ctx.getSource().sendSuccess(() -> Component.literal("Конфиг доступа перезагружен (по никам)."), true);
+        ctx.getSource().sendSuccess(() -> Component.translatable("message.stream_camera.access_reloaded"), true);
         return 1;
     }
 }

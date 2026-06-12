@@ -35,7 +35,7 @@ public record TeleportPayload(double x, double y, double z, float yaw, float pit
                 String playerName = serverPlayer.getGameProfile().getName();
                 if (!ServerAccessConfig.isAllowed(playerName)) {
                     serverPlayer.displayClientMessage(
-                            Component.literal("§cУ вас нет прав на использование телепортации!"),
+                            Component.translatable("message.stream_camera.no_permission"),
                             false
                     );
                     return;

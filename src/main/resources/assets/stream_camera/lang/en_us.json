@@ -4,5 +4,19 @@
   "key.stream_camera.f8": "Reload Config",
   "key.stream_camera.up": "Next point",
   "key.stream_camera.down": "Prev point",
-  "key.categories.stream_camera": "Stream Camera"
+  "key.categories.stream_camera": "Stream Camera",
+
+  "message.stream_camera.point_saved": "Point saved!",
+  "message.stream_camera.config_reloaded": "Config reloaded. New interval: %d seconds",
+  "message.stream_camera.teleport_interval": "Teleport interval: %d seconds",
+  "message.stream_camera.no_points": "§cNo saved points! Press F7 to save.",
+  "message.stream_camera.cycle_started": "Teleport cycle started. Current point: %d/%d",
+  "message.stream_camera.cycle_stopped": "Teleport cycle stopped.",
+  "message.stream_camera.cycle_completed": "Cycle finished, starting over.",
+  "message.stream_camera.teleport_to_point": "Teleported to point %d/%d",
+  "message.stream_camera.manual_next": "Manual move → point %d/%d",
+  "message.stream_camera.manual_prev": "Manual move ← point %d/%d",
+  "message.stream_camera.migrated_points": "Points migrated to server profile.",
+  "message.stream_camera.no_permission": "§cYou do not have permission to use teleportation!",
+  "message.stream_camera.access_reloaded": "Access config reloaded (by names)."
 }

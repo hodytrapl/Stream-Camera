@@ -4,5 +4,19 @@
   "key.stream_camera.f8": "Перезапуск конфигов",
   "key.stream_camera.up": "След. Точка",
   "key.stream_camera.down": "Пред. Точка",
-  "key.categories.stream_camera": "Стрим камера"
+  "key.categories.stream_camera": "Стрим камера",
+
+  "message.stream_camera.point_saved": "Точка сохранена!",
+  "message.stream_camera.config_reloaded": "Конфиг перезагружен. Новый интервал: %d секунд",
+  "message.stream_camera.teleport_interval": "Интервал телепортации: %d секунд",
+  "message.stream_camera.no_points": "§cНет сохранённых точек! Нажмите F7 для сохранения.",
+  "message.stream_camera.cycle_started": "Цикл телепортации запущен. Текущая точка: %d/%d",
+  "message.stream_camera.cycle_stopped": "Цикл телепортации остановлен.",
+  "message.stream_camera.cycle_completed": "Цикл завершён, начинаем сначала.",
+  "message.stream_camera.teleport_to_point": "Телепорт в точку %d/%d",
+  "message.stream_camera.manual_next": "Ручной переход → точка %d/%d",
+  "message.stream_camera.manual_prev": "Ручной переход ← точка %d/%d",
+  "message.stream_camera.migrated_points": "Точки перенесены в профиль сервера.",
+  "message.stream_camera.no_permission": "§cУ вас нет прав на использование телепортации!",
+  "message.stream_camera.access_reloaded": "Конфиг доступа перезагружен (по никам)."
 }

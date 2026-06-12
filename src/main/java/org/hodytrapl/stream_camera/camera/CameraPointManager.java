@@ -128,7 +128,7 @@ public class CameraPointManager {
                 oldFile.toFile().renameTo(oldFile.resolveSibling("points.toml.bak").toFile());
                 Minecraft mc = Minecraft.getInstance();
                 if (mc.player != null) {
-                    mc.player.sendSystemMessage(Component.literal("§eТочки перенесены в профиль сервера."));
+                    mc.player.sendSystemMessage(Component.translatable("message.stream_camera.migrated_points"));
                 }
             }
         }

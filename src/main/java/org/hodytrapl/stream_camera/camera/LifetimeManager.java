@@ -23,7 +23,8 @@ public class LifetimeManager {
         intervalTicks = ModSettings.getTeleportIntervalSeconds() * 20;
         Minecraft mc = Minecraft.getInstance();
         if (mc.player != null) {
-            mc.player.sendSystemMessage(Component.literal("Интервал телепортации: " + ModSettings.getTeleportIntervalSeconds() + " секунд"));
+            mc.player.sendSystemMessage(Component.translatable("message.stream_camera.teleport_interval",
+                    ModSettings.getTeleportIntervalSeconds()));
         }
     }
 
@@ -40,7 +41,7 @@ public class LifetimeManager {
         points = CameraPointManager.getPoints();
         if (points.isEmpty()) {
             Minecraft.getInstance().player.sendSystemMessage(
-                    Component.literal("Нет сохранённых точек! Нажмите F7 для сохранения."));
+                    Component.translatable("message.stream_camera.no_points"));
             return;
         }
         active = true;
@@ -48,12 +49,12 @@ public class LifetimeManager {
         tickCounter = 0;
         teleportToCurrentPoint();
         Minecraft.getInstance().player.sendSystemMessage(
-                Component.literal("Цикл телепортации запущен. Текущая точка: 1/" + points.size()));
+                Component.translatable("message.stream_camera.cycle_started", 1, points.size()));
     }
 
     public static void stop() {
         active = false;
-        Minecraft.getInstance().player.sendSystemMessage(Component.literal("Цикл телепортации остановлен."));
+        Minecraft.getInstance().player.sendSystemMessage(Component.translatable("message.stream_camera.cycle_stopped"));
     }
 
     public static void tick() {
@@ -66,23 +67,23 @@ public class LifetimeManager {
             tickCounter = 0;
             currentIndex = (currentIndex + 1) % points.size();
             if (currentIndex == 0) {
-                mc.player.sendSystemMessage(Component.literal("Цикл завершён, начинаем сначала."));
+                mc.player.sendSystemMessage(Component.translatable("message.stream_camera.cycle_completed"));
             }
             teleportToCurrentPoint();
-            mc.player.sendSystemMessage(
-                    Component.literal("Телепорт в точку " + (currentIndex + 1) + "/" + points.size()));
+            mc.player.sendSystemMessage(Component.translatable("message.stream_camera.teleport_to_point",
+                    currentIndex + 1, points.size()));
         }
     }
 
     public static void nextPoint() {
         if (points.isEmpty()) {
-            Minecraft.getInstance().player.sendSystemMessage(Component.literal("Нет сохранённых точек."));
+            Minecraft.getInstance().player.sendSystemMessage(Component.translatable("message.stream_camera.no_points"));
             return;
         }
         currentIndex = (currentIndex + 1) % points.size();
         teleportToCurrentPoint();
         Minecraft.getInstance().player.sendSystemMessage(
-                Component.literal("Ручной переход → точка " + (currentIndex + 1) + "/" + points.size()));
+                Component.translatable("message.stream_camera.manual_next", currentIndex + 1, points.size()));
         if (active) {
             tickCounter = 0;
         }
@@ -90,13 +91,13 @@ public class LifetimeManager {
 
     public static void previousPoint() {
         if (points.isEmpty()) {
-            Minecraft.getInstance().player.sendSystemMessage(Component.literal("Нет сохранённых точек."));
+            Minecraft.getInstance().player.sendSystemMessage(Component.translatable("message.stream_camera.no_points"));
             return;
         }
         currentIndex = (currentIndex - 1 + points.size()) % points.size();
         teleportToCurrentPoint();
         Minecraft.getInstance().player.sendSystemMessage(
-                Component.literal("Ручной переход ← точка " + (currentIndex + 1) + "/" + points.size()));
+                Component.translatable("message.stream_camera.manual_prev" + (currentIndex + 1) + "/" + points.size()));
         if (active) {
             tickCounter = 0;
         }

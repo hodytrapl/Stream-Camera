@@ -67,12 +67,13 @@ public class KeyInputHandler {
         }
         if (KEY_F7.consumeClick()) {
             CameraPointManager.saveCurrentPoint(minecraft.player);
-            minecraft.player.sendSystemMessage(Component.literal("Точка сохранена!"));
+            minecraft.player.sendSystemMessage(Component.translatable("message.stream_camera.point_saved"));
         }
         if (KEY_F8.consumeClick()) {
-            ModSettings.reload();  // перечитать файл
-            LifetimeManager.updateInterval(); // обновить интервал
-            minecraft.player.sendSystemMessage(Component.literal("Конфиг перезагружен. Новый интервал: " + ModSettings.getTeleportIntervalSeconds() + " секунд"));
+            ModSettings.reload();
+            LifetimeManager.updateInterval();
+            minecraft.player.sendSystemMessage(Component.translatable("message.stream_camera.config_reloaded",
+                    ModSettings.getTeleportIntervalSeconds()));
         }
         if (KEY_UP.consumeClick()) {
             LifetimeManager.nextPoint();
