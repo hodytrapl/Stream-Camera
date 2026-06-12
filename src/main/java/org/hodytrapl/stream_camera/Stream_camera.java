@@ -1,9 +1,11 @@
 package org.hodytrapl.stream_camera;
 
 import com.mojang.logging.LogUtils;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
@@ -25,11 +27,14 @@ public class Stream_camera {
 
         // Загружаем настройки мода (settings.toml)
         ModSettings.load();
+        //проверка клиента
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            modBus.addListener(KeyInputHandler::registerKeys);
+            NeoForge.EVENT_BUS.addListener(ClientTickEvent.Post.class, KeyInputHandler::onClientTick);
+        }
 
         // Регистрация клавиш и пакетов (без NeoForge Config)
-        modBus.addListener(KeyInputHandler::registerKeys);
         modBus.addListener(this::registerPayloads);
-        NeoForge.EVENT_BUS.addListener(ClientTickEvent.Post.class, KeyInputHandler::onClientTick);
     }
 
     private void registerPayloads(RegisterPayloadHandlersEvent event) {
